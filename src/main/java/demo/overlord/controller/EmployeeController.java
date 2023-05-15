@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import demo.overlord.exception.ResourceNotFoundException;
@@ -50,13 +51,14 @@ class EmployeeController {
         return repository.findById(id)
           .map(employee -> {
             // TODO: add other fields
-            employee.setName(updatedEmployeeData.getName());
-            employee.setRole(updatedEmployeeData.getRole());
+            employee.setFirstName(updatedEmployeeData.getFirstName());
+            employee.setLastName(updatedEmployeeData.getLastName());
             return repository.save(employee);
           })
           .orElseGet(() -> {
-            newEmployee.setId(id);
-            return repository.save(newEmployee);
+            // TODO: cover edge case -- updating Employee does not exist
+            // updatedEmployeeData.setId(id);
+            return repository.save(updatedEmployeeData);
           });
     }
 
