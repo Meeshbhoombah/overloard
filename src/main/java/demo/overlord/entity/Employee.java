@@ -1,11 +1,15 @@
 package demo.overlord.entity;
 
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.TemporalType;
 
 
 @Entity
@@ -16,16 +20,25 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    private String email;
+    private String password;
+    private String phoneNumber;
 
     private String firstName;
     private String lastName;
 
-    private String password;
+    private String role;
 
-    private String email;
-    private String phoneNumber;
-
+    @Temporal(TemporalType.DATE)
+    private Date birthday;
     private String address;
 
+    
+    private Employee() {}
+
+    public Employee(String email, String password) {
+        this.email = email;
+        this.password = password; 
+    }
 }
 
