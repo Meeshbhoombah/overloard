@@ -18,6 +18,7 @@ import demo.overlord.repository.EmployeeRepository;
 
 
 @RestController
+@RequestMapping("/api")
 class EmployeeController {
 
     private final EmployeeRepository repository;
