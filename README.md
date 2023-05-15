@@ -29,6 +29,7 @@ An employee management system
         + [ ] Download to CSV
 
 ### Developer
+#### Database
 - [x] MariaDB configuration in `application.resources`
     + **Note**: for production, reconfigure:
         * `datasource.url` to production database
@@ -36,4 +37,7 @@ An employee management system
 - [ ] Automatic MariaDB connection string reading from `.env`
     + [ ] Development
     + [ ] Production
+- [ ] Database field validation on INSERT or UPDATE
+    + [ ] Employee
+    + [ ] Admin
 
