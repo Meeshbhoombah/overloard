@@ -29,6 +29,10 @@ An employee management system
         + [] Download to CSV
 
 ### Developer
+- [] MariaDB configuration in `application.resources`
+    + **Note**: for production, reconfigure:
+        * `datasource.url` to production database
+        * `jpa.hibdernate.ddl-auto` to `validate`
 - [] Automatic MariaDB connection string reading from `.env`
     + [] Development
     + [] Production
