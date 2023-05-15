@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import demo.overlord.exception.ResourceNotFoundException;
+import demo.overlord.entity.Employee;
 import demo.overlord.repository.EmployeeRepository;
 
 
@@ -39,27 +41,7 @@ class EmployeeController {
     @GetMapping("/employees/{id}")
     Employee one(@PathVariable Long id) {
         return repository.findById(id)
-            .orElseThrow(() -> new EmployeeNotFoundException(id));
+            .orElseThrow(() -> new ResourceNotFoundException(id.toString()));
     }
-
-    @PutMapping("/employees/{id}")
-    Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
-    return repository.findById(id)
-      .map(employee -> {
-        employee.setName(newEmployee.getName());
-        employee.setRole(newEmployee.getRole());
-        return repository.save(employee);
-      })
-      .orElseGet(() -> {
-        newEmployee.setId(id);
-        return repository.save(newEmployee);
-      });
-    }
-
-    @DeleteMapping("/employees/{id}")
-    void deleteEmployee(@PathVariable Long id) {
-        repository.deleteById(id);
-    }
-    
 }
 
