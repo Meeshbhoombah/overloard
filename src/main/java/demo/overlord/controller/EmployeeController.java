@@ -38,10 +38,27 @@ class EmployeeController {
         return repository.save(newEmployee);
     }
 
-    @GetMapping("/employees/{id}")
+
+    @GetMapping("/employee/{id}")
     Employee one(@PathVariable Long id) {
         return repository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException(id.toString()));
     }
+
+    @PutMapping("/employee/{id}")
+    Employee update(@PathVariable Long id, @RequestBody Employee updatedEmployeeData) {
+        return repository.findById(id)
+          .map(employee -> {
+            // TODO: add other fields
+            employee.setName(updatedEmployeeData.getName());
+            employee.setRole(updatedEmployeeData.getRole());
+            return repository.save(employee);
+          })
+          .orElseGet(() -> {
+            newEmployee.setId(id);
+            return repository.save(newEmployee);
+          });
+    }
+
 }
 
