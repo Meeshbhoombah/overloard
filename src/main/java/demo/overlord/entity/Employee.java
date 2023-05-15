@@ -18,7 +18,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     private String email;
     private String password;
@@ -42,7 +42,7 @@ public class Employee {
     }
 
 
-    public long getId() {
+    public Long getId() {
         return id; 
     }
 
