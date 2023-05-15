@@ -2,6 +2,7 @@
 An employee management system
 
 ## Features
+### User
 - [] Employee registration
     - [] Full name
     - [] Birthday
@@ -26,4 +27,9 @@ An employee management system
         + [] By name
         + [] Filter by position
         + [] Download to CSV
+
+### Developer
+- [] Automatic MariaDB connection string reading from `.env`
+    + [] Development
+    + [] Production
 
