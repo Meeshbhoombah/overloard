@@ -30,6 +30,11 @@ class EmployeeController {
         this.repository = repository;
     }
 
+    @PostMapping("/login")
+    Employee one(@RequestBody Employee existingEmployee) {
+        return repository.findByEmail(existingEmployee.getEmail());
+    }
+
     
     @GetMapping("/employees")
     List<Employee> all() {

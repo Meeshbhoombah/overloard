@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import demo.overlord.entity.Employee;
 
+
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {}
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+    Employee findByEmail(String email);
+}
 
