@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { useNavigate } from 'react-router-dom';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,6 +11,9 @@ import Form from 'react-bootstrap/Form';
 
 
 export default function Home() {
+    let navigate = useNavigate();
+
+
     // REGISTER
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
@@ -41,9 +46,9 @@ export default function Home() {
             });
             let resJson = await res.json();
             if (res.status === 200) {
-                // TODO: navigate to dashboard
+                navigate('/me/' + resJson.id);
             } else {
-                console.log(res);
+                console.error(res);
                 // TODO: Inform user of error
             }
         } catch (err) {

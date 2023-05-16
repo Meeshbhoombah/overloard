@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import Home from './Components/Home.js';
+import EmployeeDashboard from './Components/EmployeeDashboard.js'
 
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
       <Router>
         <Routes>
             <Route exact path="/" element={<Home/>}/>
+            <Route exact path="/me/:userId" element={<EmployeeDashboard/>}/>
         </Routes>
       </Router>
     );
