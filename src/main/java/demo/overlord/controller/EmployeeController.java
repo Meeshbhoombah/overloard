@@ -53,9 +53,14 @@ class EmployeeController {
     Employee update(@PathVariable Long id, @RequestBody Employee updatedEmployeeData) {
         return repository.findById(id)
           .map(employee -> {
-            // TODO: add other fields
+            employee.setEmail(updatedEmployeeData.getEmail());
+            employee.setPassword(updatedEmployeeData.getPassword());
+            employee.setPhoneNumber(updatedEmployeeData.getPhoneNumber());
             employee.setFirstName(updatedEmployeeData.getFirstName());
             employee.setLastName(updatedEmployeeData.getLastName());
+            employee.setRole(updatedEmployeeData.getRole());
+            employee.setBirthday(updatedEmployeeData.getBirthday());
+            employee.setAddress(updatedEmployeeData.getAddress());
             return repository.save(employee);
           })
           .orElseGet(() -> {
