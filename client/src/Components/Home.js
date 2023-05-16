@@ -24,29 +24,31 @@ export default function Home() {
 
     let register = async (e) => {
         e.preventDefault();
-            try {
-                let res = await fetch("/employees", {
-                    method: "POST",
-                    body: JSON.stringify({
-                        email: registerEmail,
-                        password: registerPassword,
-                        phoneNumber: registerPhoneNumber,
-                        firstName: registerFirstName,
-                        lastName: registerLastName,
-                        role: registerRole,
-                        birthday: registerBirthday,
-                        address: registerAddress
-                    }),
-                });
-                let resJson = await res.json();
-                if (res.status === 200) {
-                    // TODO: navigate to dashboard
-                } else {
-                    // TODO: Inform user of error
-                }
-            } catch (err) {
-                console.error(err);
+        try {
+            let res = await fetch("http://localhost:8080/api/employees", {
+                method: "POST",
+                headers: new Headers({'content-type': 'application/json'}),
+                body: JSON.stringify({
+                    email: registerEmail,
+                    password: registerPassword,
+                    phoneNumber: registerPhoneNumber,
+                    firstName: registerFirstName,
+                    lastName: registerLastName,
+                    role: registerRole,
+                    birthday: registerBirthday,
+                    address: registerAddress
+                }),
+            });
+            let resJson = await res.json();
+            if (res.status === 200) {
+                // TODO: navigate to dashboard
+            } else {
+                console.log(res);
+                // TODO: Inform user of error
             }
+        } catch (err) {
+            console.error(err);
+        }
     };
 
 
@@ -84,7 +86,7 @@ export default function Home() {
                 <Col md='8'> 
                     <br></br>
                     <h2>Register</h2>
-                    <Form>
+                    <Form onSubmit={register}>
                       <Form.Group className="mb-3" controlId="formRegisterBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control 
