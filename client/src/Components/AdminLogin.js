@@ -30,7 +30,7 @@ export default function AdminLogin() {
             });
             let resJson = await res.json();
             if (username === resJson.username) {
-                console.log(resJson);
+                navigate("/admin/dashboard");
             } else {
                 console.error("Unable to find password");
             }

@@ -35,7 +35,7 @@ class EmployeeController {
         return repository.findByEmail(existingEmployee.getEmail());
     }
 
-    
+    @CrossOrigin(origins = "http://localhost:3000")   
     @GetMapping("/employees")
     List<Employee> all() {
         return repository.findAll();
