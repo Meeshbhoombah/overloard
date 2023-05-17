@@ -51,10 +51,10 @@ public class Employee {
         this.email = email; 
     }
 
-
     public String getEmail() {
         return email; 
     }
+
 
     public void setPassword(String password) {
         this.password = password; 
@@ -63,6 +63,7 @@ public class Employee {
     public String getPassword() {
         return password; 
     }
+
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
@@ -107,6 +108,7 @@ public class Employee {
     public Date getBirthday() {
         return birthday; 
     }
+
 
     public void setAddress(String address) {
         this.address = address;
