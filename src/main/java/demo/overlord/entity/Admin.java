@@ -13,6 +13,10 @@ import jakarta.persistence.TemporalType;
 @Table(name = "admin")
 public class Admin {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String username;
     private String password;
 
