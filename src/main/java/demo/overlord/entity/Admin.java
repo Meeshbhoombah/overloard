@@ -13,8 +13,8 @@ import jakarta.persistence.TemporalType;
 @Table(name = "admin")
 public class Admin {
 
-    private String username
-    private String password
+    private String username;
+    private String password;
 
 
     public void setEmail(String email) {
