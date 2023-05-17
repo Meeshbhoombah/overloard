@@ -28,11 +28,9 @@ export default function AdminLogin() {
                     password: password,
                 }),
             });
-
             let resJson = await res.json();
-
-            if (resJson.password === password) {
-                navigate('/me/' + resJson.id);
+            if (username === resJson.username) {
+                console.log(resJson);
             } else {
                 console.error("Unable to find password");
             }
@@ -55,7 +53,7 @@ export default function AdminLogin() {
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Username</Form.Label>
                         <Form.Control 
-                            type="email" 
+                            type="text" 
                             value={username}
                             placeholder="Enter username" 
                             onChange={(e) => setUsername(e.target.value)}

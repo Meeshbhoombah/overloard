@@ -31,8 +31,8 @@ class AdminController {
     }
 
     @PostMapping("/login")
-    Admin one(@RequestBody Admin admin) {
-        return repository.findByUsername(admin.getUsername());
+    Admin one(@RequestBody Admin existingAdmin) {
+        return repository.findByUsername(existingAdmin.getUsername());
     }
 
 }
