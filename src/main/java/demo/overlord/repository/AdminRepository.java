@@ -9,5 +9,5 @@ import demo.overlord.entity.Admin;
 
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Long> {
-    Employee findByUsername(String username);
+    Admin findByUsername(String username);
 }
