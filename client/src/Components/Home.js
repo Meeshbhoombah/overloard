@@ -74,7 +74,7 @@ export default function Home() {
 
             let resJson = await res.json();
 
-            if (resJson.password == password) {
+            if (resJson.password === password) {
                 navigate('/me/' + resJson.id);
             } else {
                 console.error("Unable to find password");
@@ -88,7 +88,7 @@ export default function Home() {
     return (
         <Container>
             <Row>
-                <Col md='3'>
+                <Col md='4'>
                     <br></br>
                     <h1>Overlord</h1>
                 </Col>

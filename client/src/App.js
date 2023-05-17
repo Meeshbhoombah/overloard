@@ -4,7 +4,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import Home from './Components/Home.js';
 import EmployeeDashboard from './Components/EmployeeDashboard.js'
-
+import AdminLogin from './Components/AdminLogin.js'
 
 class App extends Component {
   render() {
@@ -13,6 +13,7 @@ class App extends Component {
         <Routes>
             <Route exact path="/" element={<Home/>}/>
             <Route exact path="/me/:userId" element={<EmployeeDashboard/>}/>
+            <Route exact path="/admin" element={<AdminLogin/>}/>
         </Routes>
       </Router>
     );
