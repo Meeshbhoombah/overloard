@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import CsvDownloadButton from 'react-json-to-csv'
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 
 
 export default function AdminDashboard() {
 
     const [users, setUsers] = useState([]);
+    const [displayedUsers, setDisplayedUsers] = useState([]);
 
     const [query, setQuery] = useState("");
    
@@ -23,20 +27,33 @@ export default function AdminDashboard() {
 
             let resJson = await res.json();
             setUsers(resJson);
-            console.log(users);
+            setDisplayedUsers(resJson);
         } catch (err) {
             console.error(err);
         }
     }
 
-    getEmployeeData();
-    
-
-    let search = async() => {
-        
+    if (users.length === 0) {
+        getEmployeeData();
     }
 
-    getEmployeeData();
+
+    let search = async(e) => {
+        setQuery(e.target.value)
+        console.log(query);
+
+        let f = users.filter((user) => {
+            return user.role.includes(query) 
+        })
+
+        if (f != []) {
+            setDisplayedUsers(f);
+        }
+    }
+
+
+    useEffect(() => {
+    }, [displayedUsers]);
 
    
     return (
@@ -48,16 +65,27 @@ export default function AdminDashboard() {
                     </Col>
                 </Row>
                 <Row>
-                    <Col md="12">
+                    <Col xs="11">
                         <br></br>
-                        <Form>
+                        <Form onSubmit={(e) => e.preventDefault()}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Control 
                                     type="text" 
-                                    placeholder="Search by Name..." 
+                                    placeholder="Search by Role..."
+                                    value={query}
+                                    onChange={(e) => search(e)}
                                 />
                             </Form.Group>
                         </Form>
+                    </Col>
+                    <Col xs="1">
+                        <br></br>
+                        <CsvDownloadButton 
+                            data = {displayedUsers} 
+                            filename = "employees.csv"
+                        >
+                            Save
+                        </CsvDownloadButton>
                     </Col>
                 </Row>
                 <Row>
@@ -76,7 +104,7 @@ export default function AdminDashboard() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {users.map((user) => (
+                                {displayedUsers.map((user) => (
                                     <tr>
                                         <td>{user.firstName}</td>
                                         <td>{user.lastName}</td>
