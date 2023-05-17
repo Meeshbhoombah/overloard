@@ -41,6 +41,16 @@ An employee management system
     + [ ] Employee
     + [ ] Admin
 
-#### REST API
-- [ ] Employee
+## REST API
+`/api/v1`
+
+### Employee Registration - `POST` at `/employee`
+```
+{
+    "email": "exampleemail@demonstration.com",
+    "password": "encrypted-password-from-frontend"
+}
+```
+
+### Employee Login - `POST` at `/employee`
 
