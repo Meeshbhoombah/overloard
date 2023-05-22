@@ -40,17 +40,5 @@ An employee management system
 - [ ] Database field validation on INSERT or UPDATE
     + [ ] Employee
     + [ ] Admin
-
-## REST API
-`/api/v1`
-
-### Employee Registration - `POST` at `/employee`
-```
-{
-    "email": "exampleemail@demonstration.com",
-    "password": "encrypted-password-from-frontend"
-}
-```
-
-### Employee Login - `POST` at `/employee`
+- [ ] OAuth 2.0
 
